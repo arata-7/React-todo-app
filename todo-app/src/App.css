@@ -1,0 +1,79 @@
+.App {
+  text-align: center;
+  
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.card {
+  background-color: #fff462; /* カードの背景色 */
+  border: 1px solid #fff462; /* 枠線 */
+  border-radius: 8px; /* 角を丸める */
+  padding: 16px; /* 内側の余白 */
+  margin: 10px 0; /* 上下の余白 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 軽い影 */
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.left-section span {
+  margin-left: 1rem;
+}
+
+.right-section {
+  display: flex; /* アイコンを横並びに */
+  gap: 8px; /* アイコン間に余白を追加 */
+  align-items: center;
+}
+
+button {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
