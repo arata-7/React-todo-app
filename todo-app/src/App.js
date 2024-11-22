@@ -112,7 +112,7 @@ function TodoApp({onLogout}) { //onlogout を受け取って右端にボタン�
   return (
     <div className="App">
       <header>
-        <button onClick={onLogout}>ログアウト</button>
+        <button onClick={onLogout}>Logout</button>
       </header>
       <h1>Todo App</h1>
       <form onSubmit={handleSubmit}>
