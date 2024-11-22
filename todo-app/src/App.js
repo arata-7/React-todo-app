@@ -2,12 +2,16 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { BiSolidTrash } from "react-icons/bi";
+import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { BiPencil } from "react-icons/bi";
 import { supabase } from './supabaseClient';
+import Login from './view/Login';
+import SignUp from './view/SignUp';
 
 
 
-function App() {
+
+function TodoApp({onLogout}) { //onlogout を受け取って右端にボタンを設置　ヘッダーを設置する
   //const [id, setId] = useState(0);
   const [name, setName] = useState('');
   const [date, setDate] = useState('');
@@ -108,6 +112,9 @@ function App() {
 
   return (
     <div className="App">
+      <header>
+        <button onClick={onLogout}>Logout</button>
+      </header>
       <h1>Todo App</h1>
       <form onSubmit={handleSubmit}>
         <div className="left-section">
@@ -142,4 +149,41 @@ function App() {
   );
 }
 
-export default App;
+function App() {
+  const [user, setUser] =useState(null);
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     const { data: { user } } = await supabase.auth.getUser();
+  //     setUser(user);
+  //     console.log('test');
+  //     if (!user) navigate('/login');
+  //   };
+  //   fetchUser();
+  // }, [navigate, user]); 
+  
+  //The reason of setting navigate on dependent function useNavigate return function reference and it might differ from time to time.
+  
+  const handleLogout = async() => {
+    await supabase.auth.signOut();
+    setUser(null);
+    navigate('/login');
+  };
+
+  return (
+      <Routes>
+        <Route path='/' element={user ? <TodoApp onLogout={handleLogout} /> : <Navigate to="/login" />}/>
+        <Route path='/login' element={<Login onLogin={(user) => {setUser(user); navigate('/'); }} />} />
+        <Route path='/signup' element={<SignUp />} />
+      </Routes>
+  )
+}
+
+export default function Root() {
+  return (
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
+}
