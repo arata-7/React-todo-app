@@ -10,6 +10,7 @@ import SignUp from './view/SignUp';
 
 
 
+
 function TodoApp({onLogout}) { //onlogout を受け取って右端にボタンを設置　ヘッダーを設置する
   //const [id, setId] = useState(0);
   const [name, setName] = useState('');
