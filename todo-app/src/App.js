@@ -213,6 +213,32 @@ function App() {
 
   //The reason of setting navigate on dependent function useNavigate return function reference and it might differ from time to time.
 
+  useEffect(() => {
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        if (event === "SIGNED_IN") {
+          setUser(session?.user || null);
+          navigate("/");
+        } else if (event === "SIGNED_OUT") {
+          setUser(null);
+          navigate("/login");
+        }
+      }
+    );
+
+    const fetchUser = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      setUser(user);
+    };
+    fetchUser();
+
+    return () => {
+      authListener?.subscription.unsubscribe();
+    };
+  }, [navigate]);
+
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setUser(null);
