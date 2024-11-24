@@ -1,11 +1,9 @@
 name: Lint Check
 
-# on:
-#   pull_request:
-#     branches:
-#       - main
-
-on: [push]
+on:
+  pull_request:
+    branches:
+      - main
 
 jobs:
   lint:
@@ -13,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@3
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
