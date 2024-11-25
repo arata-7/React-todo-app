@@ -17,7 +17,6 @@ import ResetPassword from "./view/ResetPassword";
 import RequestPasswordReset from "./view/RequestPasswordReset";
 
 function TodoApp({ onLogout, user }) {
-  //onlogout を受け取って右端にボタンを設置　ヘッダーを設置する
   //const [id, setId] = useState(0);
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
