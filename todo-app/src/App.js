@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { BiSolidTrash } from "react-icons/bi";
+import { BiLogOut } from "react-icons/bi";
 import {
   BrowserRouter,
   Routes,
@@ -15,8 +16,7 @@ import SignUp from "./view/SignUp";
 import ResetPassword from "./view/ResetPassword";
 import RequestPasswordReset from "./view/RequestPasswordReset";
 
-function TodoApp({ onLogout }) {
-  //onlogout を受け取って右端にボタンを設置　ヘッダーを設置する
+function TodoApp({ onLogout, user }) {
   //const [id, setId] = useState(0);
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
@@ -120,9 +120,14 @@ function TodoApp({ onLogout }) {
   return (
     <div className="App">
       <header>
-        <button onClick={onLogout}>Logout</button>
+        <h1>Todo App</h1>
+        <span>
+          <strong>{user.email} </strong>
+        </span>
+        <button className="buttonIcon" onClick={onLogout}>
+          <BiLogOut size={30} />
+        </button>
       </header>
-      <h1>Todo App</h1>
       <form onSubmit={handleSubmit}>
         <div className="left-section">
           <input
@@ -250,7 +255,11 @@ function App() {
       <Route
         path="/"
         element={
-          user ? <TodoApp onLogout={handleLogout} /> : <Navigate to="/login" />
+          user ? (
+            <TodoApp onLogout={handleLogout} user={user} />
+          ) : (
+            <Navigate to="/login" />
+          )
         }
       />
       <Route
