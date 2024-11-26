@@ -5,25 +5,11 @@
   align-items: center;
 }
 
-
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 
 h1 {
   color: #333;
@@ -38,8 +24,7 @@ form {
 }
 
 input[type="text"],
-input[type="date"]
-{
+input[type="date"] {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -71,7 +56,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .card {
@@ -112,12 +96,28 @@ button:hover {
   color: gray; /* テキストの色を薄くする（オプション） */
 }
 
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 左右の要素を端に配置 */
+  padding: 10px 20px; /* 上下と左右の余白を調整 */
+  width: 100vw;
+}
+header > div {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header > div:nth-child(2) {
+  justify-content: center;
+}
+
+header > div:last-child {
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+header span {
+  font-size: 0.8rem;
 }
