@@ -29,7 +29,10 @@ function TodoApp({ onLogout, user }) {
   //Fetching initial data from db
   useEffect(() => {
     const fetchTodos = async () => {
-      const { data, error } = await supabase.from("todos").select("*");
+      const { data, error } = await supabase
+        .from("todos")
+        .select("*")
+        .eq("user_id", user.id);
       if (error) {
         console.error("Error fetching toos:", error);
       } else {
@@ -38,7 +41,7 @@ function TodoApp({ onLogout, user }) {
     };
 
     fetchTodos();
-  }, []);
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,6 +51,7 @@ function TodoApp({ onLogout, user }) {
         .from("todos")
         .update({ name, content, date })
         .eq("id", edittedId)
+        .eq("user_id", user.id)
         .select();
 
       if (error) {
@@ -62,7 +66,7 @@ function TodoApp({ onLogout, user }) {
       // add todo
       const { data, error } = await supabase
         .from("todos")
-        .insert([{ name, content, date, completed: false }])
+        .insert([{ name, content, date, completed: false, user_id: user.id }])
         .select();
 
       if (error) {
@@ -78,7 +82,11 @@ function TodoApp({ onLogout, user }) {
   };
 
   const handleDelete = async (id) => {
-    const { error } = await supabase.from("todos").delete().eq("id", id);
+    const { error } = await supabase
+      .from("todos")
+      .delete()
+      .eq("id", id)
+      .eq("user_id", user.id);
 
     if (error) {
       console.error("Error deleting todo:", error);
@@ -104,7 +112,8 @@ function TodoApp({ onLogout, user }) {
     const { error } = supabase
       .from("todos")
       .update({ completed: !todo.completed })
-      .eq("id", id);
+      .eq("id", id)
+      .eq("user_id", user.id);
 
     if (error) {
       console.error("Error task completion:", error);
@@ -120,13 +129,18 @@ function TodoApp({ onLogout, user }) {
   return (
     <div className="App">
       <header>
-        <h1>Todo App</h1>
-        <span>
-          <strong>{user.email} </strong>
-        </span>
-        <button className="buttonIcon" onClick={onLogout}>
-          <BiLogOut size={30} />
-        </button>
+        <div></div>
+        <div>
+          <h1>Todo App</h1>
+        </div>
+        <div>
+          <span>
+            <strong>{user.email} </strong>
+          </span>
+          <button className="buttonIcon" onClick={onLogout}>
+            <BiLogOut size={30} />
+          </button>
+        </div>
       </header>
       <form onSubmit={handleSubmit}>
         <div className="left-section">
