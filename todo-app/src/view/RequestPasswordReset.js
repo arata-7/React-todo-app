@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function RequestPasswordReset() {
   const [session, setSession] = useState(null);
@@ -47,31 +48,36 @@ export default function RequestPasswordReset() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div>
-      <h1>Update Password</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          placeholder="New Password"
-          {...register("password", {
-            required: "Password is required",
-            minLength: {
-              value: 6,
-              message: "Password must be at least 6 characters lomg",
-            },
-            Pattern: {
-              value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]+$/,
-              message:
-                "Password must include one uppercase letter, one lowercase letter, and one number",
-            },
-          })}
-        />
-        {errors.password && (
-          <p style={{ color: "red" }}>{errors.password.message}</p>
-        )}
-        <button type="submit">Update Password</button>
-      </form>
+    <div className="loginBody">
+      <div className="loginCard">
+        <h1>Update Password</h1>
+        <form onSubmit={handleSubmit(onSubmit)} className="formLogin">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            placeholder="New Password"
+            {...register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 6,
+                message: "Password must be at least 6 characters lomg",
+              },
+              Pattern: {
+                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]+$/,
+                message:
+                  "Password must include one uppercase letter, one lowercase letter, and one number",
+              },
+            })}
+          />
+          {errors.password && (
+            <p style={{ color: "red" }}>{errors.password.message}</p>
+          )}
+          <button type="submit">Update Password</button>
+          <p>
+            Already have an account? <Link to={"/login"}>Login here</Link>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }

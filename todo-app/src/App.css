@@ -1,14 +1,15 @@
+.todoBody {
+  margin-top: 120px;
+}
+
 .App {
-  text-align: center;
+  font-family: "Roboto", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  min-height: 100vh;
 }
 
 h1 {
@@ -23,17 +24,30 @@ form {
   align-items: center;
 }
 
+.addButton {
+  background: #4facfe;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
 input[type="text"],
 input[type="date"] {
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   width: 25vw;
 }
 button {
   padding: 10px;
   border: 1px solid #a09292;
   border-radius: 4px;
+  color: black;
 }
 
 input[type="text"]:focus,
@@ -74,6 +88,8 @@ button:hover {
 .left-section {
   display: flex;
   align-items: center;
+  flex: 4;
+  justify-content: start;
 }
 
 .left-section span {
@@ -84,6 +100,8 @@ button:hover {
   display: flex; /* アイコンを横並びに */
   gap: 8px; /* アイコン間に余白を追加 */
   align-items: center;
+  flex: 1;
+  justify-content: end;
 }
 
 .buttonIcon {
@@ -99,10 +117,18 @@ button:hover {
 header {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* 左右の要素を端に配置 */
-  padding: 10px 20px; /* 上下と左右の余白を調整 */
-  width: 100vw;
+  justify-content: space-between;
+  padding: 10px 20px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: linear-gradient(to right, #eef2f3, #8e9eab); /* 上品な背景 */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
+
 header > div {
   flex: 1;
   display: flex;
