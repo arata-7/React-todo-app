@@ -15,6 +15,7 @@ import Login from "./view/Login";
 import SignUp from "./view/SignUp";
 import ResetPassword from "./view/ResetPassword";
 import RequestPasswordReset from "./view/RequestPasswordReset";
+import "date-input-polyfill";
 
 function TodoApp({ onLogout, user }) {
   //const [id, setId] = useState(0);
@@ -127,90 +128,95 @@ function TodoApp({ onLogout, user }) {
   };
 
   return (
-    <div className="App">
-      <header>
-        <div></div>
-        <div>
-          <h1>Todo App</h1>
-        </div>
-        <div>
-          <span>
-            <strong>{user.email} </strong>
-          </span>
-          <button className="buttonIcon" onClick={onLogout}>
-            <BiLogOut size={30} />
-          </button>
-        </div>
-      </header>
-      <form onSubmit={handleSubmit}>
-        <div className="left-section">
-          <input
-            type="text"
-            id="todo-name"
-            name="name"
-            placeholder="Add your name"
-            required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            autoComplete="name"
-          ></input>
-          <input
-            type="text"
-            id="todo-content"
-            name="content"
-            placeholder="Add content"
-            required
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            autoComplete="off"
-          ></input>
-          <input
-            type="date"
-            id="todo-date"
-            name="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          ></input>
-        </div>
-        <div className="left-section">
-          <button type="submit">{isEditing ? "Edit" : "Add"}</button>
-        </div>
-      </form>
-      <div id="content">
-        {todos.map((todo, index) => {
-          return (
-            <div className="card" key={index}>
-              <div className="left-section">
-                <input
-                  type="checkbox"
-                  id={`${index}-check`}
-                  name="check"
-                  checked={todo.completed}
-                  onChange={() => handleComplete(todo.id)}
-                ></input>
-                <span className={todo.completed ? "completed" : ""}>
-                  <strong>{todo.name}：</strong> {todo.content} [{todo.date}]
-                </span>
+    <div className="todoBody">
+      <div className="App">
+        <header>
+          <div></div>
+          <div>
+            <h1>Todo App</h1>
+          </div>
+          <div>
+            <span>
+              <strong>{user.email} </strong>
+            </span>
+            <button className="buttonIcon" onClick={onLogout}>
+              <BiLogOut size={20} />
+            </button>
+          </div>
+        </header>
+        <form onSubmit={handleSubmit}>
+          <div className="left-section">
+            <input
+              type="text"
+              id="todo-name"
+              name="name"
+              placeholder="Add your name"
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              autoComplete="name"
+            ></input>
+            <input
+              type="text"
+              id="todo-content"
+              name="content"
+              placeholder="Add content"
+              required
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              autoComplete="off"
+            ></input>
+            <input
+              type="date"
+              id="todo-date"
+              name="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              lang="en"
+            ></input>
+          </div>
+          <div className="left-section">
+            <button type="submit" className="addButton">
+              {isEditing ? "Edit" : "Add"}
+            </button>
+          </div>
+        </form>
+        <div id="content">
+          {todos.map((todo, index) => {
+            return (
+              <div className="card" key={index}>
+                <div className="left-section">
+                  <input
+                    type="checkbox"
+                    id={`${index}-check`}
+                    name="check"
+                    checked={todo.completed}
+                    onChange={() => handleComplete(todo.id)}
+                  ></input>
+                  <span className={todo.completed ? "completed" : ""}>
+                    <strong>{todo.name}：</strong> {todo.content} [{todo.date}]
+                  </span>
+                </div>
+                <div className="right-section">
+                  <button
+                    className="buttonIcon"
+                    onClick={() => handleEdit(todo)}
+                    disabled={isEditing}
+                  >
+                    <BiPencil />
+                  </button>
+                  <button
+                    className="buttonIcon"
+                    onClick={() => handleDelete(todo.id)}
+                    disabled={isEditing}
+                  >
+                    <BiSolidTrash />
+                  </button>
+                </div>
               </div>
-              <div className="right-section">
-                <button
-                  className="buttonIcon"
-                  onClick={() => handleEdit(todo)}
-                  disabled={isEditing}
-                >
-                  <BiPencil />
-                </button>
-                <button
-                  className="buttonIcon"
-                  onClick={() => handleDelete(todo.id)}
-                  disabled={isEditing}
-                >
-                  <BiSolidTrash />
-                </button>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );
