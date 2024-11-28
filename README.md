@@ -23,7 +23,7 @@ A feature-rich ToDo application integrated with Supabase for user authentication
 ## 🌍 Live Demo
 
 This project is live and hosted on **Vercel**.  
-You can check out the deployed version here: [Live Demo](https://your-vercel-app-url.vercel.app)
+You can check out the deployed version here: [Live Demo](https://react-todo-e80mfzg31-arata-tanakas-projects.vercel.app/login)
 
 ---
 
