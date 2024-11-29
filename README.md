@@ -96,7 +96,7 @@ Follow these steps to run the app locally:
    yarn install
    ```
 
-5. **tart the development server**:
+5. **Start the development server**:
 
    ```bash
    npm start
