@@ -30,16 +30,13 @@ You can check out the deployed version here: [Live Demo](https://react-todo-e80m
 ## 📸 Screenshots
 
 ### Main View (Logged-In User)
-
 <img src="https://github.com/user-attachments/assets/0adb7eeb-4511-45f6-976a-450244261686" width=500px>
-
-### Login Page
-
-<img src="https://github.com/user-attachments/assets/a60452db-31a3-407d-a6db-b11c323fab8a" width=500px>
-
 
 ### Add Task
 <img src="https://github.com/user-attachments/assets/103814d7-c0b0-454b-97fc-71315ef88c2f" width=500px>
+
+### Login Page
+<img src="https://github.com/user-attachments/assets/a60452db-31a3-407d-a6db-b11c323fab8a" width=500px>
 
 ---
 
