@@ -72,7 +72,9 @@ function TodoApp({ onLogout, user }) {
 
       if (error) {
         console.error("Error adding todo:", error);
+        alert(`INSERT ERROR: ${error.message} ${user?.id}`); // ユーザーにもエラーを表示
       } else {
+        console.log("Todo added:", data); // デバッグ用ログ
         setTodos((prev) => [...prev, ...data]);
       }
       // setId(id + 1); delete this code since supabase add id automatically

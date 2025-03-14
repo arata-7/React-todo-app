@@ -2,8 +2,6 @@
 
 A feature-rich ToDo application integrated with Supabase for user authentication and task management.
 
-
-
 ## 🚀 Features
 
 - **Authentication**:
@@ -18,24 +16,24 @@ A feature-rich ToDo application integrated with Supabase for user authentication
 - **Responsive Design**:
   - Fully responsive and optimized for mobile and desktop devices.
 
-
 ## 🌍 Live Demo
 
 This project is live and hosted on **Vercel**.  
 You can check out the deployed version here: [Live Demo](https://react-todo-e80mfzg31-arata-tanakas-projects.vercel.app/login)
 
-
 ## 📸 Screenshots
 
 ### Main View (Logged-In User)
+
 <img src="https://github.com/user-attachments/assets/0adb7eeb-4511-45f6-976a-450244261686" width=500px>
 
 ### Add Task
+
 <img src="https://github.com/user-attachments/assets/103814d7-c0b0-454b-97fc-71315ef88c2f" width=500px>
 
 ### Login Page
-<img src="https://github.com/user-attachments/assets/a60452db-31a3-407d-a6db-b11c323fab8a" width=500px>
 
+<img src="https://github.com/user-attachments/assets/a60452db-31a3-407d-a6db-b11c323fab8a" width=500px>
 
 ## 🛠️ Installation & Setup
 
@@ -69,8 +67,7 @@ Follow these steps to run the app locally:
   | `content`   | text    | Task details                   |
   | `date`      | date    | Due date for the task          |
   | `completed` | boolean | Completion status (true/false) |
-  | `user_id`   | text    | Foreign key to `auth.users.id` |
-
+  | `user_id`   | uuid    | Foreign key to `auth.users.id` |
 
 3 **Set up environment variables**:
 
@@ -103,14 +100,12 @@ Follow these steps to run the app locally:
    http: //localhost:3000
    ```
 
-
 ## ⚙️ Technology Stack
 
 - **Frontend**: React, React Router, React Icons
 - **Authentication & Backend**: Supabase
 - **State Management**: React's `useState` and `useEffect`
 - **Styling**: Custom CSS
-
 
 ## 📂 Folder Structure
 
@@ -125,16 +120,13 @@ src/
 └── ...
 ```
 
-
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to fork this repository and submit a pull request with your enhancements.
 
-
 ## 📄 License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
-
 
 ## 👨‍💻 Author
 
